@@ -1,0 +1,71 @@
+################## DEVISE
+gem 'devise'
+
+rails generate devise:install
+rails generate devise MODEL
+rails g devise:views
+
+=> Need to edit migration to UPDATE (add_column) instead of CREATE
+
+############### SMTP
+Install gem 'mailcatcher'
+
+Must be done to be able to send Devise emails
+Edit /config/evironments/development.rb
+
+config.action_mailer.asset_host = 'http://localhost:3000'
+config.action_mailer.default_url_options = {
+  protocol: "http",
+  port: '3000',
+  host: "localhost"
+}
+
+config.action_mailer.perform_deliveries = true
+config.action_mailer.delivery_method = :smtp
+
+# Do NOT send email, just emulate and catch them using Mailcatcher
+config.action_mailer.smtp_settings = { address: "localhost", port: 1025 }
+
+Faire envoyer le mail de reset_password, montrer l'initializer
+
+############################ TESTS
+gem 'rack-test'
+gem 'minitest-rails'
+gem 'minitest-rails-capybara'
+
+---------------------- test_helper should look like this
+ENV["RAILS_ENV"] = "test"
+require File.expand_path("../../config/environment", __FILE__)
+require "minitest"
+require "rails/test_help"
+require "minitest/rails"
+require "rack/test"
+require "minitest/rails/capybara"
+
+# To add Capybara feature tests add `gem "minitest-rails-capybara"`
+# to the test group in the Gemfile and uncomment the following:
+# require "minitest/rails/capybara"
+
+# Uncomment for awesome colorful output
+# require "minitest/pride"
+
+class ActiveSupport::TestCase
+  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  fixtures :all
+  include Rack::Test::Methods
+  # Add more helper methods to be used by all tests here...
+end
+
+class Minitest::Test
+  include Rack::Test::Methods
+
+  def app
+    Rails.application
+  end
+
+  def response
+    last_response
+  end
+
+end
+-----------------------------
