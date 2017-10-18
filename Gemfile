@@ -26,11 +26,11 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'sqlite3'
-#gem 'carrierwave'
-#gem 'route_translator'
-#gem 'devise'
-#gem 'rails_admin', '~> 1.0'
-#gem 'fog'
+gem 'carrierwave'
+gem 'route_translator'
+gem 'devise'
+gem 'rails_admin', '~> 1.0'
+gem 'fog'
 gem 'haml-rails'
 #gem 'apipie-rails'
 
@@ -58,4 +58,3 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'byebug', platform: :mri
 end
-

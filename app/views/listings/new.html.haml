@@ -1,0 +1,33 @@
+.row
+  .col-xs-8.col-xs-offset-2
+    %h2= t('create_listing')
+- if @listing.errors.any?
+  .row
+    .col-xs-8.col-xs-offset-2.errors
+      %h2
+        = pluralize(@listing.errors.count, "error")
+        = t('errors', count: @listing.errors.count)
+      %ul
+        - @listing.errors.full_messages.each do |msg|
+          %li= msg
+.row
+  .col-xs-8.col-xs-offset-2.well
+    = form_for @listing, class: 'form', html: {multipart: true} do |f|
+      .form-group
+        = f.label :title, class: 'form-label required'
+        = f.text_field :title, class: 'form-control'
+      .form-group
+        = f.label :category_id, class: 'form-label required'
+        = f.collection_select :category_id, Category.all, :id, :name, {}, {class: 'form-control'}
+      .form-group
+        = f.label :description, class: 'form-label required'
+        = f.text_area :description, class: 'form-control'
+      .form-group
+        = f.label :price, class: 'form-label required'
+        = f.text_field :price, class: 'form-control'
+      .form-group
+        = f.label :picture, class: 'form-label required'
+        = f.file_field :picture, class: 'form-control'
+      .form-group
+        %span= t('required_field')
+        = f.submit t('save'), class: 'btn btn-primary pull-right'

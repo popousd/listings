@@ -1,0 +1,19 @@
+- @listings.each do |listing|
+  .row
+    .col-xs-10.listing
+    %h3= listing.title
+    %p.date
+      = l(listing.created_at)
+      %a.category{:href => "#{listings_path(category_id: listing.category_id)}"}
+        %span.badge= listing.category.name
+      .row
+        .col-xs-2
+          %a{href: listing_path(listing)}
+          = image_tag listing.picture, width: 300, class:'img-responsive'
+        .col-xs-10
+          %p
+            = listing.description
+          .clearfix
+            %br/
+            %span.price= number_to_currency(listing.price, unit: '€')
+            
