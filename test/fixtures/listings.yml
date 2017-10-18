@@ -1,0 +1,23 @@
+iphone:
+  user: seller
+  title: 'iphone title'
+  description: 'iphone description'
+  category: electronics
+  picture: File.open("#{Rails.root}/test/fixtures/files/avatar.png")
+  price: 123
+
+computer:
+  user: seller
+  title: 'computer title'
+  description: 'computer description'
+  category: electronics
+  picture: File.open("#{Rails.root}/test/fixtures/files/avatar.png")
+  price: 456
+
+car:
+  user: seller
+  title: 'car title'
+  description: 'car description'
+  category: cars
+  picture: File.open("#{Rails.root}/test/fixtures/files/avatar.png")
+  price: 2000

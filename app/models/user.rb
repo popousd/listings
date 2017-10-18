@@ -4,5 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :listings
-  belongs_to :role     
+  belongs_to :role
+
+  def is_admin?
+    return role.name == 'admin'
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end

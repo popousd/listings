@@ -1,9 +1,9 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
-  
+
   def index
-    #@listings = Listing.search(params)
-    @listings = Listing.all
+    @listings = Listing.search(params)
+    #@listings = Listing.all
     # respond_to do |format|
     #   format.html
     #   format.json { render :xml => @listings.to_xml }

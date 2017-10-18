@@ -11,14 +11,14 @@
           - I18n.available_locales.each do |loc|
             %option{value: url_for(locale: loc.to_s), selected: I18n.locale == loc}
               = loc.upcase
-          - if current_user
-            /%a{href: account_contact_path, class: 'my-account pull-right'}
-            /  = t('my_account')
-          - else
-            %a{href: new_user_session_path, class: 'my-account pull-right'}
-              = t('sin_in')
+        - if current_user
+          /%a{href: account_contact_path, class: 'my-account pull-right'}
+          /  = t('my_account')
+        - else
+          %a{href: new_user_session_path, class: 'my-account pull-right'}
+            = t('sin_in')
 
-          - if current_user
-            %a{href: destroy_user_session_path, class: 'logout pull-right', 'data-method' => 'delete'}
-              = t('logout')
+        - if current_user
+          %a{href: destroy_user_session_path, class: 'logout pull-right', 'data-method' => 'delete'}
+            = "logout"
       .clearfix
